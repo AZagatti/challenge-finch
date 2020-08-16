@@ -7,7 +7,17 @@ import { Container } from './styles';
 const Details: React.FC = () => {
   return (
     <Layout
-      subtitle="Fone Bluetooth XPO"
+      productTitle={{
+        title: 'Fone Bluetooth XPTO',
+        price: 'R$ 198,00',
+        favorite: (
+          <div className="header__favorite">
+            <input type="checkbox" id="toggle" className="header__checkbox" />
+            <label htmlFor="toggle" className="header__switch" />
+            tornar favorito
+          </div>
+        ),
+      }}
       description="Aparelho intra auricular de som em alta definição sem fio para os viciados de"
     >
       <Container>
@@ -38,6 +48,26 @@ const Details: React.FC = () => {
           <h2 className="details__title">Ficha Técnica</h2>
           <div className="details__datasheet">
             <ul>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
+              <li>Lightning connector: Sim</li>
               <li>Lightning connector: Sim</li>
               <li>Lightning connector: Sim</li>
               <li>Lightning connector: Sim</li>

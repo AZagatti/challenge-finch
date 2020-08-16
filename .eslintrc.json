@@ -26,6 +26,7 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": "error",
+    "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "no-underscore-dangle": "off",

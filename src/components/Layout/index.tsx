@@ -6,14 +6,28 @@ import SideMenu from './SideMenu';
 import { Container, Main } from './styles';
 
 interface LayoutProps {
-  subtitle: string;
+  productTitle?: {
+    title: string;
+    price: string;
+    favorite: React.ReactNode;
+  };
+  subtitle?: string;
   description: string;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, subtitle, description }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  subtitle,
+  description,
+  productTitle,
+}) => {
   return (
     <Container>
-      <Header subtitle={subtitle} description={description} />
+      <Header
+        subtitle={subtitle}
+        description={description}
+        productTitle={productTitle}
+      />
       <SideMenu />
       <Main>{children}</Main>
     </Container>
