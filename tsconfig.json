@@ -18,6 +18,7 @@
     "noImplicitAny": true,
     "baseUrl": "./src",
     "paths": {
+      "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
