@@ -130,7 +130,7 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     width: 30rem;
 
     .card__header {

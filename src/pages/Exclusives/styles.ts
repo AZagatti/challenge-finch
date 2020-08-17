@@ -7,7 +7,11 @@ export const Container = styled.div`
   grid-template-rows: auto;
   grid-auto-flow: row;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 30rem));
+  }
+
+  @media (max-width: 600px) {
     display: flex;
     flex-direction: column;
     align-items: center;
