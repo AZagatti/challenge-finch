@@ -1,5 +1,9 @@
 import React, { useState, useCallback } from 'react';
 
+import useProducts from '@hooks/useProducts';
+
+import spinnerImg from '@assets/spinner.png';
+
 import Header from './Header';
 import SideMenu from './SideMenu';
 
@@ -22,6 +26,7 @@ const Layout: React.FC<LayoutProps> = ({
   productTitle,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const { loading } = useProducts();
 
   const toggleMenu = useCallback(() => {
     setShowMenu((state) => !state);
@@ -36,7 +41,15 @@ const Layout: React.FC<LayoutProps> = ({
         toggleMenu={toggleMenu}
       />
       <SideMenu showMenu={showMenu} toggleMenu={toggleMenu} />
-      <Main>{children}</Main>
+      <Main>
+        {loading ? (
+          <div className="layout__spinner-wrapper">
+            <img src={spinnerImg} alt="Loading" className="layout__spinner" />
+          </div>
+        ) : (
+          children
+        )}
+      </Main>
     </Container>
   );
 };

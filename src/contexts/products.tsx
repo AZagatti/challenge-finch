@@ -31,6 +31,7 @@ interface ProductContextData {
   promotionProducts: Product[];
   productsSearchs: string[];
   findProducts(e: string): void;
+  loading: boolean;
 }
 
 const ProductsContext = createContext<ProductContextData>(
@@ -47,18 +48,26 @@ const ProductsProvider: React.FC = ({ children }) => {
     }
     return [];
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const { data } = await api.get('');
-      const newProducts = data.produtos.map(
-        (product: Omit<Product, 'formattedValue'>) => ({
-          ...product,
-          formattedValue: formatValue(product.valor),
-        }),
-      );
-      setOriginalProducts(newProducts);
-      setProducts(newProducts);
+      setLoading(true);
+      try {
+        const { data } = await api.get('');
+        const newProducts = data.produtos.map(
+          (product: Omit<Product, 'formattedValue'>) => ({
+            ...product,
+            formattedValue: formatValue(product.valor),
+          }),
+        );
+        setOriginalProducts(newProducts);
+        setProducts(newProducts);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
     })();
   }, []);
 
@@ -102,6 +111,7 @@ const ProductsProvider: React.FC = ({ children }) => {
         promotionProducts,
         findProducts,
         productsSearchs,
+        loading,
       }}
     >
       {children}
