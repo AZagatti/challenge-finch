@@ -67,6 +67,7 @@ describe('<Favorites />', () => {
     });
   });
   it('should be able to render Favorites with base Layout', async () => {
+    jest.spyOn(console, 'error').mockImplementationOnce(jest.fn());
     const apiMock = new MockAdapter(api);
 
     apiMock.onGet('').reply(200, { produtos: [product] });

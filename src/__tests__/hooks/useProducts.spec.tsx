@@ -64,4 +64,18 @@ describe('useProducts', () => {
 
     expect(getItemSpy).toHaveBeenCalledWith('@XPTO:products_searchs');
   });
+  it('should be able to get error from api', async () => {
+    const consoleSpy = jest
+      .spyOn(console, 'log')
+      .mockImplementationOnce(jest.fn());
+    apiMock.onGet('').reply(400, { produtos: [product] });
+
+    const { waitForNextUpdate } = renderHook(() => useProducts(), {
+      wrapper: ProductsProvider,
+    });
+
+    await waitForNextUpdate();
+
+    expect(consoleSpy).toHaveBeenCalled();
+  });
 });
