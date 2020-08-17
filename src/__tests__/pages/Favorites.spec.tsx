@@ -87,6 +87,8 @@ describe('<Favorites />', () => {
 
     jest.runAllTimers();
 
-    expect(input).toHaveValue('Fake');
+    await waitFor(() => {
+      expect(input).toHaveValue('Fake');
+    });
   });
 });

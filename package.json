@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --config webpack.ts",
-    "build": "webpack --mode production --config webpack.ts",
+    "build": "yarn test && webpack --mode production --config webpack.ts",
     "postbuild": "react-snap",
     "test": "jest",
     "test:coverage": "jest --coverage --watchAll=false",
