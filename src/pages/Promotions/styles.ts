@@ -6,4 +6,10 @@ export const Container = styled.div`
   grid-gap: 5rem;
   grid-template-rows: auto;
   grid-auto-flow: row;
+
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
