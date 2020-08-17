@@ -12,7 +12,7 @@ const Promotions: React.FC = () => {
 
   return (
     <Layout
-      subtitle="Conheça todos os nossos produtos"
+      subtitle="Conheça nossas promoções"
       description="Listagem de produtos - clique no produto desejado para saber mais"
     >
       <Container>

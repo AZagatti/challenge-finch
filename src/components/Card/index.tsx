@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import useFavorites from '@hooks/useFavorites';
 
@@ -61,11 +61,16 @@ const Card: React.FC<CardProps> = ({ product }) => {
           <input
             type="checkbox"
             id={`toggle-${product.id}`}
+            data-testid={`checkbox-${product.id}`}
             className="card__checkbox"
             checked={isFavorited(product.id)}
-            onClick={() => addToFavorites(product)}
+            onChange={() => addToFavorites(product)}
           />
-          <label htmlFor={`toggle-${product.id}`} className="card__switch" />
+          <label
+            data-testid={`toggle-${product.id}`}
+            htmlFor={`toggle-${product.id}`}
+            className="card__switch"
+          />
           tornar favorito
         </div>
       </main>

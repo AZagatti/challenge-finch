@@ -38,11 +38,16 @@ const Details: React.FC = () => {
             <input
               type="checkbox"
               id="toggle"
+              data-testid="details-favorite-checkbox"
               className="header__checkbox"
               checked={isFavorited(state.product.id)}
-              onClick={() => addToFavorites(state.product)}
+              onChange={() => addToFavorites(state.product)}
             />
-            <label htmlFor="toggle" className="header__switch" />
+            <label
+              htmlFor="toggle"
+              data-testid="details-favorite-label"
+              className="header__switch"
+            />
             tornar favorito
           </div>
         ),

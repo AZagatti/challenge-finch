@@ -48,6 +48,7 @@ const Header: React.FC<HeaderProps> = ({
     <Container>
       <div className="header__group">
         <button
+          data-testid="menu-button"
           type="button"
           className="header__menu-icon-button"
           onClick={toggleMenu}
@@ -80,6 +81,7 @@ const Header: React.FC<HeaderProps> = ({
               <input
                 id="input_search"
                 name="input_search"
+                data-testid="input_search"
                 list="suggestion_list"
                 placeholder="Buscar"
                 value={value}
