@@ -1,31 +1,85 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 
+import useFavorites from '@hooks/useFavorites';
+
+import { useHistory } from 'react-router-dom';
 import { Container } from './styles';
 
-const Card: React.FC = () => {
-  return (
-    <Container>
-      <div className="card__header">
-        <img src="https://i.imgur.com/ZwIhQDO.jpg" alt="phone" />
-        <div className="card__type">Promoção</div>
-      </div>
+interface CardProps {
+  product: {
+    id: number;
+    nome: string;
+    valor: number;
+    exclusivo: boolean;
+    promocao: boolean;
+    imagem: string;
+    decricaoCurta: string;
+    descricaoLonga: string;
+    fichaTecnica: Array<{
+      titulo: string;
+      descricao: string;
+    }>;
+    formattedValue: string;
+  };
+}
 
-      <div className="card__main">
-        <p className="card__price">R$ 198,00</p>
+const Card: React.FC<CardProps> = ({ product }) => {
+  const history = useHistory();
+  const { isFavorited, addToFavorites } = useFavorites();
+
+  const navigateToDetails = useCallback(() => {
+    history.push('/details', {
+      product,
+    });
+  }, [product, history]);
+
+  return (
+    <Container exclusive={product?.exclusivo} promotion={product?.promocao}>
+      <header className="card__header">
+        <button
+          className="card__navigate-button"
+          onClick={navigateToDetails}
+          type="button"
+        >
+          <img src={product.imagem} alt={product.nome} />
+          <div className="card__type">
+            {product?.promocao && 'Promoção'}
+            {product?.exclusivo && 'Exclusivo'}
+          </div>
+        </button>
+      </header>
+
+      <main className="card__main">
+        <button
+          className="card__navigate-button"
+          onClick={navigateToDetails}
+          type="button"
+        >
+          <p className="card__price">{product.formattedValue}</p>
+        </button>
         <div className="card__favorite">
-          <input type="checkbox" id="toggle" className="card__checkbox" />
-          <label htmlFor="toggle" className="card__switch" />
+          <input
+            type="checkbox"
+            id={`toggle-${product.id}`}
+            className="card__checkbox"
+            checked={isFavorited(product.id)}
+            onClick={() => addToFavorites(product)}
+          />
+          <label htmlFor={`toggle-${product.id}`} className="card__switch" />
           tornar favorito
         </div>
-      </div>
+      </main>
 
-      <div className="card__footer">
-        <p className="card__title">Fone Bluetooth XPTO</p>
-        <p className="card__description">
-          Aparelho intra auricular de som em alta definição sem fio para os
-          viciados de plantão
-        </p>
-      </div>
+      <footer className="card__footer">
+        <button
+          className="card__navigate-button"
+          onClick={navigateToDetails}
+          type="button"
+        >
+          <p className="card__title">{product.nome}</p>
+          <p className="card__description">{product.decricaoCurta}</p>
+        </button>
+      </footer>
     </Container>
   );
 };

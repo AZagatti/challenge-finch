@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 
 import Header from './Header';
 import SideMenu from './SideMenu';
@@ -21,14 +21,21 @@ const Layout: React.FC<LayoutProps> = ({
   description,
   productTitle,
 }) => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = useCallback(() => {
+    setShowMenu((state) => !state);
+  }, []);
+
   return (
     <Container>
       <Header
         subtitle={subtitle}
         description={description}
         productTitle={productTitle}
+        toggleMenu={toggleMenu}
       />
-      <SideMenu />
+      <SideMenu showMenu={showMenu} toggleMenu={toggleMenu} />
       <Main>{children}</Main>
     </Container>
   );

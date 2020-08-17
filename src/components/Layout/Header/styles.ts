@@ -13,6 +13,10 @@ export const Container = styled.header`
     background: rgba(0, 0, 0, 0.25);
   }
 
+  .header__menu-icon-button {
+    display: none;
+  }
+
   .header__group {
     display: flex;
     align-items: center;
@@ -37,6 +41,7 @@ export const Container = styled.header`
     .header__return {
       border: 0;
       outline: 0;
+      background: transparent;
       margin-right: 2rem;
       display: flex;
       height: 3.5rem;
@@ -76,6 +81,43 @@ export const Container = styled.header`
       }
     }
   }
+
+  @media (max-width: 900px) {
+    position: relative;
+    padding: 0;
+    padding: 2rem;
+    text-align: center;
+
+    .header__menu-icon-button {
+      display: block;
+      border: 0;
+      outline: 0;
+      background: transparent;
+
+      .header__menu-icon {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    .header__group {
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .header__search-wrapper {
+      margin: 2rem;
+
+      .header__search {
+        input {
+          width: 20rem;
+        }
+      }
+    }
+  }
 `;
 
 export const HeaderWrapper = styled.div`
@@ -110,9 +152,10 @@ export const HeaderWrapper = styled.div`
         display: inline-block;
         width: 2.5rem;
         height: 1rem;
-        background-color: #0186f8;
+        background-color: #a4a5bc;
         border-radius: 1rem;
         margin-right: 1rem;
+        cursor: pointer;
 
         &::after {
           content: '';
@@ -122,20 +165,28 @@ export const HeaderWrapper = styled.div`
           border-radius: 50%;
           background-color: white;
           top: 0.15rem;
-          left: 0.2rem;
           transition: all 0.3s;
+          left: 1.6rem;
         }
       }
       .header__checkbox:checked + .header__switch {
-        background-color: #a4a5bc;
+        background-color: #0186f8;
 
         &::after {
-          left: 1.6rem;
+          left: 0.2rem;
         }
       }
       .header__checkbox {
         display: none;
       }
+    }
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+
+    .header__title-group {
+      flex-direction: column;
     }
   }
 `;

@@ -83,4 +83,18 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width: 900px) {
+    .details__informations {
+      flex-direction: column;
+
+      .details__header {
+        margin: 0 0 2rem 0;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
 `;

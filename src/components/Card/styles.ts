@@ -1,9 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  exclusive?: boolean;
+  promotion?: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
+  cursor: pointer;
+  background-color: #fff;
   width: 35rem;
   box-shadow: 0px 10px 20px #16319b29;
   border-radius: 0.3rem;
+
+  .card__navigate-button {
+    outline: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+  }
 
   .card__header {
     position: relative;
@@ -15,12 +29,24 @@ export const Container = styled.div`
       right: 0;
       padding: 0.5rem;
       width: 15rem;
-      background: transparent linear-gradient(125deg, #ef0e5a 0%, #55118f 100%)
-        0% 0% no-repeat padding-box;
-
       color: #fff;
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
+
+      ${({ exclusive }) =>
+        exclusive &&
+        css`
+          background: transparent
+            linear-gradient(125deg, #1db6ce 0%, #182ac9 100%) 0% 0% no-repeat
+            padding-box;
+        `}
+      ${({ promotion }) =>
+        promotion &&
+        css`
+          background: transparent
+            linear-gradient(125deg, #ef0e5a 0%, #55118f 100%) 0% 0% no-repeat
+            padding-box;
+        `}
     }
 
     img {
@@ -54,11 +80,13 @@ export const Container = styled.div`
       .card__switch {
         position: relative;
         display: inline-block;
+        cursor: pointer;
         width: 2.5rem;
         height: 1rem;
-        background-color: #0186f8;
         border-radius: 1rem;
         margin-right: 1rem;
+
+        background-color: #a4a5bc;
 
         &::after {
           content: '';
@@ -68,15 +96,14 @@ export const Container = styled.div`
           border-radius: 50%;
           background-color: white;
           top: 0.15rem;
-          left: 0.2rem;
           transition: all 0.3s;
+          left: 1.6rem;
         }
       }
       .card__checkbox:checked + .card__switch {
-        background-color: #a4a5bc;
-
+        background-color: #0186f8;
         &::after {
-          left: 1.6rem;
+          left: 0.2rem;
         }
       }
       .card__checkbox {
@@ -100,6 +127,16 @@ export const Container = styled.div`
       font-size: 1.4rem;
       color: #8e879e;
       margin-top: 1.5rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    width: 30rem;
+
+    .card__header {
+      img {
+        width: 100%;
+      }
     }
   }
 `;

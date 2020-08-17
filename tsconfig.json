@@ -20,7 +20,10 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
+      "@contexts/*": ["contexts/*"],
+      "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
+      "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"]
     }

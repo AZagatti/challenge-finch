@@ -7,8 +7,8 @@ import useProducts from '@hooks/useProducts';
 
 import { Container } from './styles';
 
-const Home: React.FC = () => {
-  const { products } = useProducts();
+const Exclusives: React.FC = () => {
+  const { exclusiveProducts } = useProducts();
 
   return (
     <Layout
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       description="Listagem de produtos - clique no produto desejado para saber mais"
     >
       <Container>
-        {products.map((product) => (
+        {exclusiveProducts.map((product) => (
           <Card key={product.id} product={product} />
         ))}
       </Container>
@@ -24,4 +24,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Exclusives;
