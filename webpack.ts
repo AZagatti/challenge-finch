@@ -7,6 +7,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const htmlPlugin = new HtmlWebpackPlugin({
   template: path.resolve(__dirname, 'public', 'index.html'),
+  favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
 });
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
