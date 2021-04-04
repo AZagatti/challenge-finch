@@ -44,8 +44,6 @@ Agora você deve clonar o repositório.
 2.  Para iniciar a aplicação utilize `yarn start` ou `npm run start`
 3.  Para rodar os testes unitários use `yarn test` ou `npm run test` e `yarn test:coverage` ou `npm run test:coverage` para gerar o relatório de cobertura.
 
-Caso queira testar a versão em produção, está hospedada em: <http://finch.azagatti.dev/>
-
 ## 👁 Preview
 
 <div align="center">
